@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Secret Admin Company</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #050505;
+
+    color: white;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   TOP MENU
+========================= */
+
+header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: #080808;
+
+    border-bottom: 1px solid #333;
+
+    padding: 14px 18px;
+}
+
+
+.menu {
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+
+.logo {
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-right: 20px;
+
+    white-space: nowrap;
+}
+
+
+.menu button {
+
+    background: #111;
+
+    color: white;
+
+    border: 1px solid #444;
+
+    padding: 11px 15px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.25s;
+}
+
+
+.menu button:hover {
+
+    background: white;
+
+    color: black;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    min-height: 600px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+
+.hero-content {
+
+    max-width: 900px;
+}
+
+
+.hero h1 {
+
+    font-size: clamp(38px, 7vw, 80px);
+
+    letter-spacing: 5px;
+
+    line-height: 1.1;
+}
+
+
+.hero p {
+
+    margin-top: 20px;
+
+    color: #888;
+
+    letter-spacing: 3px;
+}
+
+
+.hero-button {
+
+    margin-top: 35px;
+
+    padding: 15px 28px;
+
+    background: white;
+
+    color: black;
+
+    border: none;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.hero-button:hover {
+
+    transform: scale(1.08);
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+
+    min-height: 500px;
+
+    padding: 90px 8%;
+
+    border-top: 1px solid #222;
+}
+
+
+section h2 {
+
+    font-size: 40px;
+
+    margin-bottom: 35px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+
+.card {
+
+    background: #101010;
+
+    border: 1px solid #333;
+
+    padding: 25px;
+
+    transition: 0.3s;
+}
+
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: white;
+
+    box-shadow:
+    0 10px 30px rgba(255,255,255,0.08);
+}
+
+
+.card h3 {
+
+    margin-bottom: 15px;
+}
+
+
+.card p {
+
+    color: #999;
+
+    line-height: 1.6;
+}
+
+
+.admin-card {
+
+    border: 2px solid white;
+}
+
+
+/* =========================
+   NORMAL BUTTON
+========================= */
+
+.main-button {
+
+    margin-top: 20px;
+
+    padding: 13px 22px;
+
+    background: white;
+
+    color: black;
+
+    border: none;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.main-button:hover {
+
+    transform: scale(1.07);
+}
+
+
+/* =========================
+   LEADERBOARD
+========================= */
+
+.leader {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 20px;
+
+    background: #101010;
+
+    border-bottom: 1px solid #333;
+
+    transition: 0.25s;
+}
+
+
+.leader:hover {
+
+    background: white;
+
+    color: black;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 3000;
+
+    background:
+    rgba(0,0,0,0.85);
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.modal-box {
+
+    width: 90%;
+
+    max-width: 450px;
+
+    background: #111;
+
+    border: 1px solid #555;
+
+    padding: 30px;
+
+    box-shadow:
+    0 20px 70px black;
+}
+
+
+.modal-box h2 {
+
+    margin-bottom: 20px;
+}
+
+
+.close {
+
+    float: right;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    color: #aaa;
+}
+
+
+.close:hover {
+
+    color: white;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+    background: #050505;
+
+    color: white;
+
+    border: 1px solid #444;
+
+    outline: none;
+}
+
+
+input:focus,
+textarea:focus {
+
+    border-color: white;
+}
+
+
+textarea {
+
+    height: 110px;
+
+    resize: vertical;
+}
+
+
+.message {
+
+    margin-top: 15px;
+
+    color: #aaa;
+}
+
+
+/* =========================
+   USER PANEL
+========================= */
+
+#userPanel {
+
+    display: none;
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 2500;
+
+    background: #111;
+
+    border: 1px solid #555;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding: 50px;
+
+    text-align: center;
+
+    color: #555;
+
+    border-top: 1px solid #222;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 600px) {
+
+    .logo {
+
+        width: 100%;
+
+        margin-bottom: 8px;
+    }
+
+    .menu button {
+
+        padding: 9px 10px;
+
+        font-size: 12px;
+    }
+
+    section {
+
+        padding: 70px 6%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<header>
+
+<div class="menu">
+
+<div class="logo">
+SECRET ADMIN COMPANY
+</div>
+
+
+<button onclick="goTo('admin')">
+ADMIN PANEL
+</button>
+
+
+<button onclick="goTo('company')">
+COMPANY
+</button>
+
+
+<button onclick="goTo('members')">
+MEMBERS
+</button>
+
+
+<button onclick="goTo('actions')">
+ACTIONS
+</button>
+
+
+<button onclick="goTo('leaderboards')">
+LEADERBOARDS
+</button>
+
+
+<button onclick="openLogin()">
+LOGIN
+</button>
+
+
+<button onclick="openRegister()">
+REGISTER
+</button>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<div class="hero">
+
+<div class="hero-content">
+
+<h1>
+WELCOME TO SECRET ADMIN COMPANY
+</h1>
+
+<p>
+PRIVATE COMPANY MANAGEMENT SYSTEM
+</p>
+
+<button
+class="hero-button"
+onclick="openRegister()">
+
+CREATE ACCOUNT
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     ADMIN PANEL
+========================= -->
+
+<section id="admin">
+
+<h2>
+ADMIN PANEL
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card admin-card">
+
+<h3>
+MAIN ADMIN
+</h3>
+
+<p>
+Owner and main administrator.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+CREATE ACTION
+</h3>
+
+<p>
+Create a new company action.
+</p>
+
+<button
+class="main-button"
+onclick="openAction()">
+
+CREATE ACTION
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+MANAGE MEMBERS
+</h3>
+
+<p>
+Manage members of the company.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+VIEW ACTIONS
+</h3>
+
+<p>
+View company actions.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     COMPANY
+========================= -->
+
+<section id="company">
+
+<h2>
+COMPANY
+</h2>
+
+
+<div
+id="companyList"
+class="cards">
+
+
+<div class="card">
+
+<h3>
+SECRET ADMIN COMPANY
+</h3>
+
+<p>
+Revenue: PRIVATE
+</p>
+
+<p>
+Created: 2026
+</p>
+
+<p>
+Owner: MAIN ADMIN
+</p>
+
+</div>
+
+
+</div>
+
+
+<button
+class="main-button"
+onclick="openCompany()">
+
++ ADD COMPANY
+
+</button>
+
+</section>
+
+
+
+<!-- =========================
+     MEMBERS
+========================= -->
+
+<section id="members">
+
+<h2>
+MEMBERS
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card admin-card">
+
+<h3>
+MAIN ADMIN
+</h3>
+
+<p>
+OWNER / ADMIN
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+MEMBER 1
+</h3>
+
+<p>
+MEMBER
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+MEMBER 2
+</h3>
+
+<p>
+MEMBER
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+MEMBER 3
+</h3>
+
+<p>
+MEMBER
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+MEMBER 4
+</h3>
+
+<p>
+MEMBER
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ACTIONS
+========================= -->
+
+<section id="actions">
+
+<h2>
+ACTIONS
+</h2>
+
+
+<div
+id="actionList"
+class="cards">
+
+
+<div class="card">
+
+<h3>
+WELCOME ACTION
+</h3>
+
+<p>
+SECRET ADMIN COMPANY has been created.
+</p>
+
+</div>
+
+
+</div>
+
+
+<button
+class="main-button"
+onclick="openAction()">
+
++ CREATE ACTION
+
+</button>
+
+</section>
+
+
+
+<!-- =========================
+     LEADERBOARDS
+========================= -->
+
+<section id="leaderboards">
+
+<h2>
+LEADERBOARDS
+</h2>
+
+
+<div class="leader">
+
+<span>
+#1 MAIN ADMIN
+</span>
+
+<span>
+1000 XP
+</span>
+
+</div>
+
+
+<div class="leader">
+
+<span>
+#2 MEMBER 1
+</span>
+
+<span>
+750 XP
+</span>
+
+</div>
+
+
+<div class="leader">
+
+<span>
+#3 MEMBER 2
+</span>
+
+<span>
+500 XP
+</span>
+
+</div>
+
+
+<div class="leader">
+
+<span>
+#4 MEMBER 3
+</span>
+
+<span>
+300 XP
+</span>
+
+</div>
+
+
+<div class="leader">
+
+<span>
+#5 MEMBER 4
+</span>
+
+<span>
+100 XP
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     REGISTER
+========================= -->
+
+<div
+id="registerModal"
+class="modal">
+
+
+<div class="modal-box">
+
+
+<span
+class="close"
+onclick="closeRegister()">
+
+×
+
+</span>
+
+
+<h2>
+REGISTER
+</h2>
+
+
+<input
+id="registerUsername"
+type="text"
+placeholder="Username"
+>
+
+
+<input
+id="registerPassword"
+type="password"
+placeholder="Password"
+>
+
+
+<input
+id="registerConfirm"
+type="password"
+placeholder="Confirm Password"
+>
+
+
+<button
+class="main-button"
+onclick="registerUser()">
+
+REGISTER
+
+</button>
+
+
+<p
+id="registerMessage"
+class="message">
+
+</p>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div
+id="loginModal"
+class="modal">
+
+
+<div class="modal-box">
+
+
+<span
+class="close"
+onclick="closeLogin()">
+
+×
+
+</span>
+
+
+<h2>
+LOGIN
+</h2>
+
+
+<input
+id="loginUsername"
+type="text"
+placeholder="Username"
+>
+
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password"
+>
+
+
+<button
+class="main-button"
+onclick="loginUser()">
+
+LOGIN
+
+</button>
+
+
+<p
+id="loginMessage"
+class="message">
+
+</p>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     ADD COMPANY
+========================= -->
+
+<div
+id="companyModal"
+class="modal">
+
+
+<div class="modal-box">
+
+
+<span
+class="close"
+onclick="closeCompany()">
+
+×
+
+</span>
+
+
+<h2>
+ADD COMPANY
+</h2>
+
+
+<input
+id="companyName"
+placeholder="Company Name"
+>
+
+
+<input
+id="companyMoney"
+placeholder="Revenue"
+>
+
+
+<input
+id="companyDate"
+placeholder="Creation Date"
+>
+
+
+<input
+id="companyOwner"
+placeholder="Owner"
+>
+
+
+<textarea
+id="companyDescription"
+placeholder="Description">
+
+</textarea>
+
+
+<button
+class="main-button"
+onclick="addCompany()">
+
+ADD COMPANY
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     CREATE ACTION
+========================= -->
+
+<div
+id="actionModal"
+class="modal">
+
+
+<div class="modal-box">
+
+
+<span
+class="close"
+onclick="closeAction()">
+
+×
+
+</span>
+
+
+<h2>
+CREATE ACTION
+</h2>
+
+
+<input
+id="actionName"
+placeholder="Action Name"
+>
+
+
+<textarea
+id="actionDescription"
+placeholder="Action Description">
+
+</textarea>
+
+
+<button
+class="main-button"
+onclick="addAction()">
+
+CREATE ACTION
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     USER PANEL
+========================= -->
+
+<div id="userPanel">
+
+Logged in as:
+
+<strong id="currentUser">
+</strong>
+
+<br>
+<br>
+
+<button
+class="main-button"
+onclick="logout()">
+
+LOGOUT
+
+</button>
+
+</div>
+
+
+
+<footer>
+
+SECRET ADMIN COMPANY © 2026
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function goTo(id) {
+
+    document
+    .getElementById(id)
+    .scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   REGISTER
+========================= */
+
+function openRegister() {
+
+    document
+    .getElementById("registerModal")
+    .style.display = "flex";
+
+}
+
+
+function closeRegister() {
+
+    document
+    .getElementById("registerModal")
+    .style.display = "none";
+
+}
+
+
+function registerUser() {
+
+    const username =
+        document
+        .getElementById("registerUsername")
+        .value
+        .trim();
+
+
+    const password =
+        document
+        .getElementById("registerPassword")
+        .value;
+
+
+    const confirm =
+        document
+        .getElementById("registerConfirm")
+        .value;
+
+
+    const message =
+        document
+        .getElementById("registerMessage");
+
+
+    if (
+        !username ||
+        !password ||
+        !confirm
+    ) {
+
+        message.innerText =
+        "Please fill in all fields.";
+
+        return;
+    }
+
+
+    if (
+        password !== confirm
+    ) {
+
+        message.innerText =
+        "Passwords do not match.";
+
+        return;
+    }
+
+
+    let users =
+        JSON.parse(
+            localStorage
+            .getItem("sac_users")
+            || "[]"
+        );
+
+
+    if (
+        users.some(
+            user =>
+            user.username === username
+        )
+    ) {
+
+        message.innerText =
+        "Username already exists.";
+
+        return;
+    }
+
+
+    users.push({
+
+        username: username,
+
+        password: password
+
+    });
+
+
+    localStorage.setItem(
+        "sac_users",
+        JSON.stringify(users)
+    );
+
+
+    message.innerText =
+    "Account created successfully.";
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function openLogin() {
+
+    document
+    .getElementById("loginModal")
+    .style.display = "flex";
+
+}
+
+
+function closeLogin() {
+
+    document
+    .getElementById("loginModal")
+    .style.display = "none";
+
+}
+
+
+function loginUser() {
+
+    const username =
+        document
+        .getElementById("loginUsername")
+        .value
+        .trim();
+
+
+    const password =
+        document
+        .getElementById("loginPassword")
+        .value;
+
+
+    const message =
+        document
+        .getElementById("loginMessage");
+
+
+    let users =
+        JSON.parse(
+            localStorage
+            .getItem("sac_users")
+            || "[]"
+        );
+
+
+    const user =
+        users.find(
+            u =>
+            u.username === username &&
+            u.password === password
+        );
+
+
+    if (!user) {
+
+        message.innerText =
+        "Incorrect username or password.";
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "sac_logged_user",
+        username
+    );
+
+
+    document
+    .getElementById("currentUser")
+    .innerText = username;
+
+
+    document
+    .getElementById("userPanel")
+    .style.display = "block";
+
+
+    closeLogin();
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+    localStorage.removeItem(
+        "sac_logged_user"
+    );
+
+
+    document
+    .getElementById("userPanel")
+    .style.display = "none";
+
+}
+
+
+/* =========================
+   ADD COMPANY
+========================= */
+
+function openCompany() {
+
+    document
+    .getElementById("companyModal")
+    .style.display = "flex";
+
+}
+
+
+function closeCompany() {
+
+    document
+    .getElementById("companyModal")
+    .style.display = "none";
+
+}
+
+
+function addCompany() {
+
+    const name =
+        document
+        .getElementById("companyName")
+        .value;
+
+
+    if (!name) {
+
+        alert(
+            "Enter a company name."
+        );
+
+        return;
+    }
+
+
+    const money =
+        document
+        .getElementById("companyMoney")
+        .value;
+
+
+    const date =
+        document
+        .getElementById("companyDate")
+        .value;
+
+
+    const owner =
+        document
+        .getElementById("companyOwner")
+        .value;
+
+
+    const description =
+        document
+        .getElementById("companyDescription")
+        .value;
+
+
+    const card =
+        document.createElement("div");
+
+
+    card.className = "card";
+
+
+    card.innerHTML = `
+
+        <h3>${name}</h3>
+
+        <p>
+        Revenue: ${money}
+        </p>
+
+        <p>
+        Created: ${date}
+        </p>
+
+        <p>
+        Owner: ${owner}
+        </p>
+
+        <p>
+        ${description}
+        </p>
+
+    `;
+
+
+    document
+    .getElementById("companyList")
+    .appendChild(card);
+
+
+    closeCompany();
+
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+function openAction() {
+
+    document
+    .getElementById("actionModal")
+    .style.display = "flex";
+
+}
+
+
+function closeAction() {
+
+    document
+    .getElementById("actionModal")
+    .style.display = "none";
+
+}
+
+
+function addAction() {
+
+    const name =
+        document
+        .getElementById("actionName")
+        .value;
+
+
+    const description =
+        document
+        .getElementById("actionDescription")
+        .value;
+
+
+    if (!name) {
+
+        alert(
+            "Enter an action name."
+        );
+
+        return;
+    }
+
+
+    const card =
+        document.createElement("div");
+
+
+    card.className = "card";
+
+
+    card.innerHTML = `
+
+        <h3>${name}</h3>
+
+        <p>
+        ${description}
+        </p>
+
+    `;
+
+
+    document
+    .getElementById("actionList")
+    .appendChild(card);
+
+
+    closeAction();
+
+}
+
+
+/* =========================
+   REMEMBER LOGIN
+========================= */
+
+const savedUser =
+    localStorage
+    .getItem("sac_logged_user");
+
+
+if (savedUser) {
+
+    document
+    .getElementById("currentUser")
+    .innerText = savedUser;
+
+
+    document
+    .getElementById("userPanel")
+    .style.display = "block";
+
+}
+
+
+/* =========================
+   CLOSE MODALS
+========================= */
+
+window.onclick =
+function(event) {
+
+    if (
+        event.target
+        .classList
+        .contains("modal")
+    ) {
+
+        event.target.style.display =
+        "none";
+
+    }
+
+};
+
+</script>
+
+
+</body>
+
+</html>
